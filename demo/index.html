@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortfolioJaneDoe</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        function handleLinkedInClick(event) {
+            event.preventDefault();
+            alert("No LinkedIn page here");
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Jane Doe</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>About me</h2>
+            <p>A brief introduction here</p>
+            <ul>
+                <li>skill 1</li>
+                <li>skill 2</li>
+                <li>skill 3</li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <article>
+                <h3>Project 1 Title</h3>
+                <figure>
+                    <img src="images/IMG_2007.JPG" alt="First project">
+                    <figcaption>A brief desc of project 1</figcaption>
+                </figure>
+                <p>detailed info about project 1</p>
+            </article>
+            <article>
+                <h3>Project 2 Title</h3>
+                <figure>
+                    <img src="images/IMG_2007.JPG" alt="Second project">
+                    <figcaption>A brief desc of project 2</figcaption>
+                </figure>
+                <p>detailed info about project 2</p>
+            </article>
+        </section>
+
+        <section id="contact">
+            <h2>Contact me</h2>
+            <form action="submit_form.php" method="post">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea type="message" name="message" rows="1" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit">Send Message</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="projects-table">
+            <h2>Project Overview</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Project name</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Project 1</td>
+                        <td>2024</td>
+                        <td>A brief description</td>
+                    </tr>
+                    <tr>
+                        <td>Project 2</td>
+                        <td>2024</td>
+                        <td>A brief description</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Jane Doe. All rights reserved.</p>
+        <p>
+            <a href="https://github.com/kiaaww" target="_blank">Github</a> |
+            <a href="#" onclick="handleLinkedInClick(event)">LinkedIn</a>
+        </p>
+    </footer>
+</body>
+</html>
