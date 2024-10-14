@@ -1,0 +1,16 @@
+[
+  {
+    "title": "A GreenScreen Video",
+    "description": "A video made to show video editing and making skills",
+    "image": "images/greenscreen_project.png",
+    "details": "This project showcases advanced video editing using greenscreen technology.",
+    "year": 2023
+  },
+  {
+    "title": "ATM Bank Project",
+    "description": "An ATM-like bank application with backend and frontend functionality.",
+    "image": "images/atm_open.png",
+    "details": "A full-stack banking system that handles basic transactions and account management.",
+    "year": 2024
+  }
+]
