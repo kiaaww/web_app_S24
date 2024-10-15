@@ -10,55 +10,29 @@
 </head>
 <body>
     <header>
+        <button id="hamburger-btn" class="hamburger" aria-label="Toggle Navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
         <h1>Jane Doe</h1>
-            <button id="hamburger-btn" class="hamburger" aria-label="Toggle Navigation">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
         <nav id="main-nav" class="nav-hidden">
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#Overview">Overview</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#bonus" id="open-bonus-btn">Bonus</a></li>
+                <li><a href="#bonus-section">Bonus</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section id="about">
+        <section id="about" class="visible">
             <h2>About me</h2>
             <p>A brief introduction here</p>
             <h3>My skills</h3>
             <ul id="skillsList"></ul>
-            <a href="files/my_CV.txt" target="_blank">Open CV</a>
-        </section>
+            <p>Links:</p>
+            <a href="files/JaneDoe_CV.pdf" target="_blank">Open My CV</a>
 
-        <section id="projects">
-            <h2>Projects</h2>
-            <article>
-                <h3>A greenScreen video</h3>
-                <figure>
-                    <figcaption>Description</figcaption>
-                    <video width="500px" height="400px" controls="controls">
-                        <source src="files/mediafile-test.mp4" type="video/mp4" />
-                    </video>
-                </figure>
-                <p>detailed info about project 1</p>
-            </article>
-            <article>
-                <h3>ATM_bank project</h3>
-                <figure>
-                    <figcaption>A brief desc of project 2</figcaption>
-                    <img src="images/atm_open.png" alt="Second project">
-                </figure>
-                <p>detailed info about project 2</p>
-            </article>
-        </section>
-
-        <section id="Overview">
             <h2>Project Overview</h2>
             <table>
                 <thead>
@@ -69,55 +43,51 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>A greenScreen video</td>
-                        <td>2023</td>
-                        <td>A video made to show video editing and making skills</td>
-                    </tr>
-                    <tr>
-                        <td>ATM_bank project</td>
-                        <td>2024</td>
-                        <td>An ATM like bank with backend and frontend functionality</td>
-                    </tr>
+                    
                 </tbody>
             </table>
+
+                <h2>Contact me</h2>
+                <form id="contactForm" novalidate>
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    </div>
+    
+                    <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email" required>
+                    </div>
+    
+                    <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea name="message" id="message" rows="1" required></textarea>
+                    </div>
+    
+                    <div class="form-group">
+                        <button type="submit">Send Message</button>
+                    </div>
+                </form>
+    
+                <p id="formResponse"></p>
         </section>
 
-        <section id="contact">
-            <h2>Contact me</h2>
-            <form id="contactForm" novalidate>
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                </div>
+        <section id="projects" class="hidden">
+            <h2>Projects</h2>
+            <div class="project-grid" id="project-grid">
 
-                <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="text" id="email" name="email" required>
-                </div>
+            </div>
+        </section>
 
-                <div class="form-group">
-                <label for="message">Message:</label>
-                <textarea name="message" id="message" rows="1" required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <button type="submit">Send Message</button>
-                </div>
-            </form>
-
-            <p id="formResponse"></p>
+        <section id="bonus-section" class="hidden">
+            <h2>Bonus section for a good mood</h2>
+            <div class="bonus-content">
+                <h3>Bonus: Random Dog Pictures</h3>
+                <button id="load-image">Get a Random dog picture</button>
+                <div id="dog-image-container"></div>
+            </div>
         </section>
     </main>
-
-    <section id="bonus-section" style="display: none;">
-        <div class="bonus-content">
-            <button id="close-bonus-btn" class="close-btn">Close Bonus Section</button>
-            <h2>Bonus: Random Dog Pictures</h2>
-            <button id="load-image">Get a Random dog picture</button>
-            <div id="dog-image-container"></div>
-        </div>
-    </section>
 
     <footer>
         <p>&copy; 2024 Jane Doe. All rights reserved.</p>

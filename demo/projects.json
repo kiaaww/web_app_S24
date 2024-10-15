@@ -1,0 +1,25 @@
+[
+    {
+      "title": "GreenScreen video",
+      "date": "2022",
+      "description": "A video made to show video editing and making skills",
+      "media": {
+        "type": "video",
+        "src": "files/mediafile-test.mp4",
+        "width": 500,
+        "height": 400
+      },
+      "details": "Detailed info about greenScreen project"
+    },
+    {
+      "title": "ATM_bank project",
+      "date": "2024",
+      "description": "An ATM like bank with backend and frontend functionality",
+      "media": {
+        "type": "image",
+        "src": "images/atm_open.png",
+        "alt": "Second project"
+      },
+      "details": "Detailed info about the ATM bank project"
+    }
+  ]

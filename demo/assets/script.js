@@ -18,6 +18,90 @@ class DogAPI {
     }
 }
 
+async function loadProjects() {
+    try {
+        const response = await fetch('projects.json');
+        if (!response.ok) {
+            throw new Error('Error fetching project data');
+        }
+        const projects = await response.json();
+
+        projects.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
+
+        const projectGrid = document.getElementById('project-grid');
+        projectGrid.innerHTML = '';
+
+        projects.forEach(project => {
+            const article = document.createElement('article');
+
+            const title = document.createElement('h3');
+            title.textContent = project.title;
+            article.appendChild(title);
+
+            const figure = document.createElement('figure');
+
+            if (project.media.type === 'video') {
+                const video = document.createElement('video');
+                video.width = project.media.width;
+                video.height = project.media.height;
+                video.controls = true;
+                const source = document.createElement('source');
+                source.src = project.media.src;
+                source.type = 'video/mp4';
+                video.appendChild(source);
+                figure.appendChild(video);
+            } else if (project.media.type === 'image') {
+                const img = document.createElement('img');
+                img.src = project.media.src;
+                img.alt = project.media.alt;
+                figure.appendChild(img);
+            }
+
+            const figcaption = document.createElement('figcaption');
+            figcaption.textContent = project.description;
+            figure.appendChild(figcaption);
+
+            article.appendChild(figure);
+
+            const details = document.createElement('p');
+            details.textContent = project.details;
+            article.appendChild(details);
+
+            projectGrid.appendChild(article);
+        });
+
+        populateProjectTable(projects);
+
+    } catch (error) {
+        console.error('Error loading projects: ', error);
+    }
+}
+
+function populateProjectTable(projects) {
+    const tableBody = document.querySelector('#about table tbody');
+    tableBody.innerHTML = '';
+
+    projects.forEach(project => {
+        const row = document.createElement('tr');
+
+        const nameCell = document.createElement('td');
+        nameCell.textContent = project.title;
+        row.appendChild(nameCell);
+
+        const dateCell = document.createElement('td');
+        dateCell.textContent = project.date;
+        row.appendChild(dateCell);
+
+        const descCell = document.createElement('td');
+        descCell.textContent = project.description;
+        row.appendChild(descCell);
+
+        tableBody.appendChild(row);
+    });
+}
+
+    document.addEventListener('DOMContentLoaded', loadProjects);
+
 class App {
     constructor() {
         this.dogAPI = new DogAPI();
@@ -31,22 +115,32 @@ class App {
     initEventListeners() {
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const mainNav = document.getElementById('main-nav');
-        const bonusSection = document.getElementById('bonus-section');
-        const openBonusBtn = document.getElementById('open-bonus-btn');
-        const closeBonusBtn = document.getElementById('close-bonus-btn');
+        const sections = document.querySelectorAll("main section");
 
         hamburgerBtn.addEventListener('click', () => {
             mainNav.classList.toggle('nav-hidden');
     });
-    
-    openBonusBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        bonusSection.style.display = 'flex';
-        window.scrollTo(0,bonusSection.offsetTop);
-    });
 
-    closeBonusBtn.addEventListener('click', () => {
-        bonusSection.style.display = 'none';
+    mainNav.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const targetId = e.target.getAttribute("href").substring(1);
+
+            sections.forEach(section => {
+                section.classList.add("hidden");
+                section.classList.remove("visible");
+            });
+
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.classList.remove("hidden");
+                targetSection.classList.add("visible");
+            }
+
+            if (!mainNav.classList.contains('nav-hidden')) {
+                mainNav.classList.add('nav-hidden');
+            }
+        });
     });
 
     this.loadImage.addEventListener('click', () => this.displayDogImage());
@@ -97,19 +191,19 @@ document.getElementById("contactForm").addEventListener("submit", function(event
     responseMessage.style.display = 'block';
 
     if (name === "" || email === "" || message === "") {
-        this.showMessage(responseMessage, "Please fill in all the fields.", "error");
+        App.prototype.showMessage(responseMessage, "Please fill in all the fields.", "error");
         return;
     }
 
     try {
         console.log(`name=${encodeURIComponent(name)}email=${encodeURIComponent(email)}&message=${encodeURIComponent(message)}`);
-        this.showMessage(responseMessage, "Message sent successfully!", "success");
+        App.prototype.showMessage(responseMessage, "Message sent successfully!", "success");
         document.getElementById("contactForm").reset();
 
     } catch (error) {
-        this.showMessage(responseMessage, "there was an error submitting the form: " + error.message, "error");
+        App.prototype.showMessage(responseMessage, "there was an error submitting the form: " + error.message, "error");
     }
-}.bind(App.prototype));
+});
 
 App.prototype.showMessage = function (responseMessage, message, type) {
     responseMessage.textContent = message;
@@ -123,3 +217,8 @@ App.prototype.showMessage = function (responseMessage, message, type) {
 document.addEventListener('DOMContentLoaded', () => {
     new App();
 });
+
+function handleLinkedInClick(event) {
+    event.preventDefault();
+    alert("Sorry, I do not have a LinkedIn profile :(");
+}
