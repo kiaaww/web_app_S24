@@ -1,6 +1,6 @@
 # web_app_S24
 
-## Arviointikriteerit
+## Criteria
 
 ### HTML (25%)
 
@@ -33,3 +33,5 @@
 3. Data from the asynchronous call is displayed on the webpage.
 4. Error handling is implemented (for failed API calls, etc.).
 5. Effective use of asynchronous data to enhance user experience (like filtering, sorting).
+
+Link to my web page: https://kiaaww.github.io/web_app_S24/
