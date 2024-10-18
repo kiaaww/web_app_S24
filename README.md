@@ -5,8 +5,8 @@
 ### HTML (25%)
 
 You can find the HTML from index.html
-1. Basic HTML structure is present.
-2. HTML structure with clear content differentiation (headings, paragraphs, lists).
+1. Basic HTML structure is present. (whole file)
+2. HTML structure with clear content differentiation (headings, paragraphs, lists). (whole file)
 3. Use of forms, links, and media.
 (links: 33-34, form: 50-72, media: 85-87, also spaces for more media and pictures. The rest of the links can be found from project.json)
 4. Tables are effectively used. (table from lines 36-48)
